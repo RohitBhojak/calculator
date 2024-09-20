@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculator</title>
     <link rel="stylesheet" href="./style.css">
+    <script src="https://kit.fontawesome.com/9550a347df.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <div id="calculator">
@@ -15,35 +16,36 @@
         <div id="button-area">
             <div id="row-1">
                 <button id="all-clear" class="delete">AC</button>
-                <button id="clear" class="delete">&#x232b;</button>
-                <button id="modulus" class="operator">%</button>
-                <button id="divide" class="operator">&divide;</button>
+                <button id="clear" class="delete"><i class="fa-solid fa-delete-left"></i></button>
+                <button id="modulus" class="operator"><i class="fa-solid fa-percent"></i></button>
+                <button id="divide" class="operator"><i class="fa-solid fa-divide"></i></button>
             </div>
             <div id="row-2">
                 <button id="num-7" class="number">7</button>
                 <button id="num-8" class="number">8</button>
                 <button id="num-9" class="number">9</button>
-                <button id="multiply" class="operator">*</button>
+                <button id="multiply" class="operator"><i class="fa-solid fa-xmark"></i></button>
             </div>
             <div id="row-3">
                 <button id="num-4" class="number">4</button>
                 <button id="num-5" class="number">5</button>
                 <button id="num-6" class="number">6</button>
-                <button id="subtract" class="operator">-</button>
+                <button id="subtract" class="operator"><i class="fa-solid fa-minus"></i></button>
             </div>
             <div id="row-4">
                 <button id="num-1" class="number">1</button>
                 <button id="num-2" class="number">2</button>
                 <button id="num-3" class="number">3</button>
-                <button id="add" class="operator">+</button>
+                <button id="add" class="operator"><i class="fa-solid fa-plus"></i></button>
             </div>
             <div id="row-5">
                 <button id="num-0" class="number">0</button>
-                <button id="dot" class="operator">.</button>
-                <button id="equal" class="operator">=</button>
+                <button id="dot" class="dot">.</button>
+                <button id="equal" class="equal"><i class="fa-solid fa-equals"></i></button>
             </div>
         </div>
     </div>
     <div id="footer">Copyright &copy;  Rohit Singh Bhojak 2024</div>
+    <script src="./script.js"></script>
 </body>
 </html>

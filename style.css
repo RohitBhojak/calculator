@@ -1,3 +1,8 @@
+@font-face {
+    font-family: "digital-7";
+    src: url(./digital-7.regular.ttf);
+}
+
 body {
     display: flex;
     flex-direction: column;
@@ -20,6 +25,7 @@ body {
 }
 
 #screen {
+    font-family: digital-7;
     height: 100px;
     margin: 20px;
     margin-bottom: 15px;
@@ -32,14 +38,18 @@ body {
 
 #expression-screen {
     flex-grow: 1;
-    font-size: 18px;
-    color: #bbb;
+    font-size: 28px;
+    color: #1e1e1e;
+    margin-left: auto;
 }
 
 #result-screen {
     flex-grow: 1.5;
-    font-size: 24px;
-    color: #f4f4f4;
+    font-size: 56px;
+    color: #000000;
+    font-weight: bold;
+    margin-left: auto;
+    padding-top: 8px;
 }
 
 #button-area {
@@ -63,10 +73,12 @@ body {
 }
 
 button, #dot {
+    font-family: digital-7;
     flex: 1;
     height: 100%;
     gap: 10px;
-    font-size: 18px;
+    font-size: 24px;
+    font-weight: bold;
     background-color: #f1c40f;
     border-radius: 5px;
     color: #333;
