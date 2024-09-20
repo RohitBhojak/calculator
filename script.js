@@ -16,6 +16,7 @@ const operations = {
     '/': (a, b) => a / b,
     '%': (a, b) => a % b,
 };
+const numbers = new Set(["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]);
 
 let expression = [];
 let hasOperator = false;
@@ -84,6 +85,22 @@ function display(char) {
             }
     }
 }
+
+// Keyboard support
+document.addEventListener("keydown", (e) => {
+    const key = e.key;
+    if (operators.has(key) || numbers.has(key)) {
+        display(key);
+    } else if (key === '.') {
+        display("dot");
+    } else if (key === 'Enter' || key === "=") {
+        display("equal");
+    } else if (key === 'Backspace') {
+        display("clear");
+    } else if (key === "Delete" || key === "Escape") {
+        display("all-clear");
+    }
+})
 
 function calculate(expr) {
     let operator = '';
