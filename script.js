@@ -113,13 +113,13 @@ function calculate(expr) {
         result = "ERROR";  // Handle division by zero
     } else {
         result = operations[operator](num1, num2);
-    }
 
-    // Handle overflow or NaN results
-    if (typeof result !== 'number' || result.toString().length > 12) {
-        result = "OVERFLOW";
-    } else if (isNaN(result)) {
-        result = "ERROR";
+        // Handle overflow or NaN results
+        if (typeof result !== 'number' || result.toString().length > 12) {
+            result = "OVERFLOW";
+        } else if (isNaN(result)) {
+            result = "ERROR";
+        }
     }
 
     resultScreen.textContent = result; // Show the result
