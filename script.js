@@ -86,22 +86,6 @@ function display(char) {
     }
 }
 
-// Keyboard support
-document.addEventListener("keydown", (e) => {
-    const key = e.key;
-    if (operators.has(key) || numbers.has(key)) {
-        display(key);
-    } else if (key === '.') {
-        display("dot");
-    } else if (key === 'Enter' || key === "=") {
-        display("equal");
-    } else if (key === 'Backspace') {
-        display("clear");
-    } else if (key === "Delete" || key === "Escape") {
-        display("all-clear");
-    }
-})
-
 function calculate(expr) {
     let operator = '';
     let a = '';
@@ -132,8 +116,13 @@ function calculate(expr) {
         result = operations[operator](num1, num2);
 
         // Handle overflow or NaN results
-        if (typeof result !== 'number' || result.toString().length > 12) {
-            result = "OVERFLOW";
+        result = result.toString();
+        if (result.length > 12) {
+            if (result.includes(".")) {
+                result = result.slice(0, 12); // Trim to 12 characters
+            } else {
+                result = "OVERFLOW";
+            }
         } else if (isNaN(result)) {
             result = "ERROR";
         }
@@ -159,3 +148,19 @@ buttonArea.addEventListener("click", (e) => {
         console.log(expression); // Debugging output
     }
 });
+
+// Keyboard support
+document.addEventListener("keydown", (e) => {
+    const key = e.key;
+    if (operators.has(key) || numbers.has(key)) {
+        display(key);
+    } else if (key === '.') {
+        display("dot");
+    } else if (key === 'Enter' || key === "=") {
+        display("equal");
+    } else if (key === 'Backspace') {
+        display("clear");
+    } else if (key === "Delete" || key === "Escape") {
+        display("all-clear");
+    }
+})

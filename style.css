@@ -31,7 +31,7 @@ body {
     margin-bottom: 15px;
     display: flex;
     flex-direction: column;
-    background-color: #30bb91c4;
+    background-color: #3ad6a7bb;
     border-radius: 5px;
     padding: 10px;
 }
@@ -106,12 +106,12 @@ button, #dot {
 }
 
 #equal {
-    background-color: #81c784;
+    background-color: #4caf50;
     color: white;
 }
 
 #equal:hover {
-    background-color: #4caf50;
+    background-color: #45a049;
 }
 
 .operator {
