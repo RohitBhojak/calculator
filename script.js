@@ -91,9 +91,17 @@ function calculate(expr) {
     let a = '';
     let b = '';
     let foundOperator = false;
-
+    let isNegative = false;
     // Loop through the expression to find the operator and operands
-    for (let char of expr) {
+    for (let i = 0; i < expression.length; i++) {
+        let char = expression[i];
+
+        // Handle negative numbers
+        if (char === '-' && !foundOperator && i === 0) {
+            isNegative = true;
+            continue; // Skip adding the '-' to the operand yet
+        }
+
         if (operators.has(char)) {
             operator = char;
             foundOperator = true;
@@ -106,20 +114,24 @@ function calculate(expr) {
         }
     }
 
-    const num1 = parseFloat(a);
+    // Parse numbers, considering negative sign for the first operand
+    if (a === '') a = '0'; // Handle empty first operand
+    const num1 = isNegative ? parseFloat('-' + a) : parseFloat(a);
     const num2 = parseFloat(b);
+    console.log(num1 + ' ' + num2);
     let result;
 
     if (num2 === 0 && operator === '/') {
         result = "ERROR";  // Handle division by zero
     } else {
-        result = operations[operator](num1, num2);
+        if (operator === '') result = num1; // Handle no operator
+        else result = operations[operator](num1, num2);
 
         // Handle overflow or NaN results
         result = result.toString();
         if (result.length > 12) {
             if (result.includes(".")) {
-                result = result.slice(0, 12); // Trim to 12 characters
+                result = result.slice(0, 13); // Trim to 12 characters
             } else {
                 result = "OVERFLOW";
             }
