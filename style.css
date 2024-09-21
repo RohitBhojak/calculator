@@ -102,7 +102,7 @@ button, #dot {
 }
 
 .delete:hover {
-    background-color: #d32f2f;
+    background-color: #c0392b;
 }
 
 #equal {
@@ -115,12 +115,12 @@ button, #dot {
 }
 
 .operator {
-    background-color: #64b5f6;
+    background-color: #2196f3;
     color: white;
 }
 
 .operator:hover {
-    background-color: #2196f3;
+    background-color: #1769aa;
 }
 
 #footer {
