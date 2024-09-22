@@ -92,6 +92,7 @@ function calculate(expr) {
     let b = '';
     let foundOperator = false;
     let isNegative = false;
+
     // Loop through the expression to find the operator and operands
     for (let i = 0; i < expression.length; i++) {
         let char = expression[i];
@@ -127,13 +128,17 @@ function calculate(expr) {
         if (operator === '') result = num1; // Handle no operator
         else result = operations[operator](num1, num2);
 
-        // Handle overflow or NaN results
+        // Check if result is too large or small and convert it to exponential notation
         result = result.toString();
         if (result.length > 12) {
-            if (result.includes(".")) {
-                result = result.slice(0, 13); // Trim to 12 characters
+            if (Math.abs(result) >= 1e12 || Math.abs(result) < 1e-6) {
+                // Convert large/small results to exponential notation
+                result = Number(result).toExponential(6); // 6 digits precision
+            } else if (result.includes(".")) {
+                // Trim decimal results if they are too long
+                result = result.slice(0, 12);
             } else {
-                result = "OVERFLOW";
+                result = Number(result).toExponential(6); // Handle large integers
             }
         } else if (isNaN(result)) {
             result = "ERROR";
@@ -145,6 +150,7 @@ function calculate(expr) {
     expression = [result];  // Reset expression to only hold the result
     hasOperator = false; // Reset operator flag
 }
+
 
 buttonArea.addEventListener("click", (e) => {
     const button = e.target.closest("button");
